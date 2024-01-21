@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Buses</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid id="grid">
+    <ion-row id="row">
+      <ion-col>
+        <div id="map_canvas" #map_canvas></div>
+      </ion-col>
+      <ion-col size="2">
+        <ion-list>
+          <!--<ion-item lines="none" *ngFor="let bus of BUSES">-->
+          <ion-button  *ngFor="let bus of BUSES" (click)='click(bus)' [ngClass]="btnStyle(bus)">
+            {{bus}}
+          </ion-button>
+          <!--</ion-item>-->
+        </ion-list>
+      </ion-col>      
+    </ion-row>
+  </ion-grid>
+</ion-content>

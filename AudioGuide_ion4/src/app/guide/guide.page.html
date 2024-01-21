@@ -1,0 +1,40 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>    
+    <ion-title>
+      {{guide.guide_name}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll="false">
+    <div id="content-container">
+
+      <!--
+      <div>
+      <ion-button (click)="start()">Start</ion-button>
+      <ion-button (click)="stop()">Stop</ion-button>
+      </div>
+      -->
+
+      <ion-fab vertical="top" horizontal="end" slot="fixed">
+          <ion-fab-button (click)="sim()">
+            Sim
+          </ion-fab-button>
+      </ion-fab>
+
+      <div *ngIf="enableSim">
+      <ion-button (click)="startSim()">Start Sim</ion-button>
+      <ion-button (click)="stepFw()">Step forw</ion-button>
+      <ion-button (click)="stepBk()">Step back</ion-button>
+      </div>
+
+      <div id="map_canvas"></div>
+
+      <!--<ion-img [src]="img"></ion-img>-->
+
+      <!--<my-tab-bar></my-tab-bar>-->
+    </div>
+</ion-content>

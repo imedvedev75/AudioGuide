@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>       
+    <ion-title>
+      <ion-searchbar id="searchBox" class="my-searchbar" type="text" name="search" [(ngModel)]="searchText" 
+      #search="ngModel" #searchField placeholder="Search" (keyup.enter)="searchEnter()"
+      (ionClear)="searchClear()"></ion-searchbar> 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!--<ion-list class="list">-->
+    <div id="guide" *ngFor = "let guide of guides;" >
+      <div class="container" (click)="click(guide)">
+          <img src="{{glob.getServerFileUrl(guide.images[0], guide.guide_uuid)}}" class="image">
+          <div class="bottom-left"><h1>{{guide.guide_name}}</h1></div>
+       </div> 
+      
+      <div id="info">
+        <ion-grid>
+          <ion-row align-items-stretch>
+            <ion-col align-self-center>
+              <ion-grid>
+                <ion-row align-items-center>
+                    <ion-icon name="navigate"></ion-icon>
+                    <!--<div class="textMedium">distance</div>-->
+                    <ion-label class="textMedium">{{guide.distance}} Km</ion-label>
+                </ion-row>
+                <ion-row>
+                  <div class="textMedium">{{guide.user.name}}</div>
+                </ion-row>
+                <ion-row *ngIf="showDelGuide()">
+                  <ion-button (click)="deleteDownGuide(guide)">Remove</ion-button>
+                  </ion-row>
+              </ion-grid>
+            </ion-col>    
+            <ion-col size="auto">
+              <ion-grid>
+                <ion-row align-items-center>
+                  <ion-col size="1">
+                    <div id="line"></div>
+                  </ion-col>
+                  <ion-col class="center">
+                    <div id="review">
+                      <div class="textBig">5.0</div><br>
+                      <img src="assets/images/5-star.jpg" style="max-width: 100px">
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      
+    </div>
+  <!--</ion-list>-->
+
+</ion-content>

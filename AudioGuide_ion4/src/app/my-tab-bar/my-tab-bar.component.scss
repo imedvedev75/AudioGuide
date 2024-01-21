@@ -1,0 +1,16 @@
+.my-tab-bar {
+    position: absolute;
+    position: fixed;
+    bottom: 0;
+    width: 100%;   
+    background-color: rgba(0, 0, 0, 0.5); 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    color: var(--color-main);
+}
+
+#whitespace {
+    min-height: 90px;
+}

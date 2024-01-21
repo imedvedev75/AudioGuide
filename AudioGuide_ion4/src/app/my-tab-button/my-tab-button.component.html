@@ -1,0 +1,6 @@
+<div class="my-tab-btn" (click)="click()">
+    <div class='round' [ngClass]="{'round-sel' : selected == true}" id="round" name="round">
+        <ion-icon name="{{icon}}" size="large"></ion-icon>
+    </div>
+    <label class="tab-btn-text" [ngClass]="{'tab-btn-text-sel' : selected == true}">{{text}}</label>
+</div>

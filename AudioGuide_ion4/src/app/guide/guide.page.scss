@@ -1,0 +1,9 @@
+#content-container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+#map_canvas {
+  flex-grow: 1 !important;
+}

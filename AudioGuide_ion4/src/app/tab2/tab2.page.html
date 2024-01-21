@@ -1,0 +1,25 @@
+<ion-header no-border>
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+    </ion-buttons>       
+    <ion-title>
+      Tracks
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-no-scroll">
+  <div class="tracks" scrollY="true" *ngIf="showList">
+      <ion-list>
+          <ion-item *ngFor = "let track of tracks;" (click)="click(track)">
+              {{track.track_name}}
+             </ion-item> 
+      </ion-list> 
+  </div>
+  <ion-button (click)="showHide()">Show/Hide</ion-button>
+<div id="map_canvas"></div>
+<!--<my-tab-bar></my-tab-bar>-->
+</ion-content>
+
+

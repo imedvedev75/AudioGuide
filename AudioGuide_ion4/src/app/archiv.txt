@@ -1,0 +1,55 @@
+/* COPY VDIDEO
+      let fileName = capturedFile.name;
+      let dir = capturedFile['localURL'].split('/');
+      dir.pop();
+      let fromDirectory = dir.join('/');      
+      var toDirectory = this.file.dataDirectory;
+      var toFile = this.placeId + ".mp4";
+      
+      try {
+        let res = await this.file.copyFile(fromDirectory , fileName , toDirectory, toFile);
+        console.log('video copy success');
+        let path = this.file.dataDirectory + toFile;
+        //let url = path.replace(/^file:\/\//, '');
+        let url = this.webview.convertFileSrc(path);
+        console.log('video url: ' + url);
+        let video = this.myVideo.nativeElement;
+        video.src = url;
+        console.log('video src: ' + video.src);
+      }
+      catch(err) {
+        console.log('err: ', err);
+      };                  
+*/
+
+
+---------- COPY FILE --------------
+  async storeFile(data) {
+    if (data.length <= 0) {
+      this.glob.showToast('length of data is 0');
+      return;
+    }
+    let mediaFile: MediaFile = data[0];
+    let localURL = mediaFile["localURL"];
+    console.log('old URL: ' + localURL);
+    localURL = decodeURI(localURL);
+    console.log('new URL: ' + localURL);
+    let dir = localURL.split('/');
+    let name = dir.pop();
+    let fromDirectory = dir.join('/');      
+    var toDirectory = this.file.dataDirectory;
+    var toName = this.placeId + ".m4a";
+    console.log('toName: ' + toName);
+
+    try {
+      await this.file.copyFile(fromDirectory, name, toDirectory, toName);
+      console.log('copy success');
+      return toDirectory + toName;
+    }
+    catch(err) {
+     this.glob.showToast('error copying file: ' + localURL + 
+      "\n Error: " + JSON.stringify(err));
+     console.log(err);
+    };    
+  }
+-------------------------------------------------

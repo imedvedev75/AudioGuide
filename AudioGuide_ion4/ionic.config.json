@@ -1,0 +1,7 @@
+{
+  "name": "AudioGuide",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,16 @@
+.idea/
+guide_backend/__pycache__/
+guide_backend/data/
+AudioGuide_ion4/node_modules
+AudioGuide_ion4/.sourcemaps
+AudioGuide_ion4/plugins
+AudioGuide_ion4/resources
+AudioGuide_ion4/www
+AudioGuide_ion4/platforms
+AudioGuide_ion4/e2e
+font_awesome/
+config.xml
+assets
+
+
+

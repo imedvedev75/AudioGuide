@@ -1,0 +1,79 @@
+ <ion-header no-border>
+  <ion-toolbar>
+    
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>      
+    <ion-title>Create guide</ion-title>
+
+    <ion-buttons slot="secondary">
+      <ion-button (click)="btnLinesClicked()" >
+          <ion-icon name="logo-polymer" ></ion-icon>
+      </ion-button>  
+      <ion-button (click)="btnPlacesListClicked()" >
+          <ion-icon name="list" ></ion-icon>
+      </ion-button>  
+    </ion-buttons>  
+</ion-toolbar>
+<div id="lines_toolbar" [hidden]="hideLinesToolbar()">
+    <ion-button (click)="drawLinesClick()" [ngClass]="drawLinesStyle">Draw</ion-button> 
+    <ion-button  (click)="selLine()">Select</ion-button> 
+    <ion-button  (click)="delLine()" [disabled]="disableDelLineBtn()"><ion-icon name="trash"></ion-icon></ion-button> 
+    <ion-button  (click)="delAllLines()" ><ion-icon name="trash"></ion-icon>All</ion-button> 
+  </div>
+</ion-header>
+
+<!--
+<ion-split-pane>
+    <ion-menu content-id="main-content">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Menu</ion-title>
+          </ion-toolbar>
+        </ion-header>
+    </ion-menu>
+-->
+
+<ion-content id="main-content">
+
+  <div id="content-container">
+    <div id="map_canvas" #map_canvas>
+
+        <ion-searchbar color="light" id="searchBox" type="text" name="search" [(ngModel)]="searchText" 
+        #search="ngModel" #searchField placeholder="Search Place"></ion-searchbar> 
+
+      <div id="info" #info [hidden]="hideInfo">
+        <h5>{{currInfo.name}}</h5>
+        <div style="overflow-x: auto;white-space: nowrap;">
+          <!--<img *ngFor = "let image of currInfo.images;" height="80px" src="{{image}}">-->
+          <img source="assets/images/white.png">
+        </div>
+        <ion-button (click)="addPlace()" [disabled]="disableAdd()">Add</ion-button>
+        <ion-button (click)="removePlace()" [disabled]="!disableAdd()">Remove</ion-button>
+        <ion-button (click)="editPlace()" [disabled]="!disableAdd()">Edit</ion-button>
+      </div>
+
+      <div id="lines" (click)="linesClick()" [hidden]="hideLinesMobile()" #linesDiv
+        (touchstart)=touchStart($event) (touchend)=touchEnd($event) (touchmove)="touchMove($event)"></div>
+      <div id="lines" (click)="linesClick()" [hidden]="hideLinesDesktop()" #linesDiv
+        (mousedown)="mdLines($event)" (mouseup)="muLines($event)" (mousemove)="mmLines($event)"></div>
+
+      <!--(mousedown)="mdLines($event)" (mouseup)="muLines($event)" (mousemove)="mmLines($event)"-->
+
+    </div>
+  </div>
+
+    <div #dummy [hidden]="true"></div>
+
+    <!--<ion-button (click)="testEditPlace()">Test edit place</ion-button>-->
+
+    <!--
+    <ion-list>
+      <ion-item *ngFor = "let place of myPlaces;" (click)="clickList(place)" (dblclick)="dblClkList(place)">
+        {{place.name}}
+       </ion-item>       
+    </ion-list>
+  -->
+
+</ion-content>
+<!--</ion-split-pane>-->

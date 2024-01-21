@@ -1,0 +1,82 @@
+<ion-header no-border>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>        
+    <ion-title>{{guide.guide_name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  (click)="upload()"><ion-icon name="cloud-upload"></ion-icon></ion-button>
+    </ion-buttons>    
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div id="content-container">
+    <ion-card>
+        <ion-card-header>
+          <ion-card-title>Guide Photos</ion-card-title>
+        </ion-card-header> 
+        <ion-card-content>
+          <div id="carousel" >
+            <div class="slide" *ngFor = "let image of guide.images;">
+                <img class="image" src="{{glob.getFileURL(image, guide.guide_uuid, guide.mode)}}" >
+                <button class="btn" (click)="deleteImage(image)"><ion-icon name="trash"></ion-icon></button>
+            </div>
+          </div>
+          <ion-button  (click)="shot()" [hidden]="!glob.isMobile()"><ion-icon name="camera"></ion-icon></ion-button>
+          <ion-button  (click)="loadImage()" [hidden]="!glob.isMobile()"><ion-icon name="document"></ion-icon></ion-button>
+
+          <input type="file" #fileImage name="fileImage" id="fileImage" class="inputfile" (change)="imgFileSelected($event)" hidden="isMobile()"/>
+          <label id="inputImage" #inputImage for="fileImage">
+            <ion-button [hidden]="isMobile()" (click)="browseImage()"><ion-icon name="document"></ion-icon></ion-button>
+          </label>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+          <ion-card-title>Guide Audio Intro</ion-card-title>
+        </ion-card-header> 
+        <ion-card-content>
+          <audio controls #myaudio id="myaudio"></audio>
+          <br>
+          <ion-button (click)="recordAudio2()" [disabled]="disableRecord" [hidden]="!glob.isMobile()"><ion-icon name="mic"></ion-icon></ion-button>
+          <ion-button (click)="stopRec()" [disabled]="!disableRecord" [hidden]="!glob.isMobile()"><ion-icon name="square"></ion-icon></ion-button>
+          <ion-button (click)="recordAudio()" [hidden]="!glob.isMobile()">Ext</ion-button>
+
+          <input type="file" #fileAudio name="fileAudio" id="fileAudio" class="inputfile" (change)="fileSelected($event)"/>
+          <label id="myInput" #myInput for="fileAudio">
+            <ion-button [hidden]="fileAudioHidden()" (click)="browse()"><ion-icon name="document" [hidden]="isMobile()"></ion-icon></ion-button>
+          </label>
+
+        </ion-card-content>
+    </ion-card>      
+
+    <ion-card id="descr-card">
+      <ion-card-header>
+        <ion-card-title>Guide Description</ion-card-title>
+      </ion-card-header> 
+      <ion-card-content id="descr-card-content">
+        <ion-textarea id="text-area-descr" text-wrap type="text"  [(ngModel)]="guide.description" #guide.description="ngModel" #descriptionField></ion-textarea>  
+      </ion-card-content>
+    </ion-card>   
+
+    <ion-button (click)="editGuide()" expand="true">Edit Guide</ion-button>
+  
+<!--
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Video</ion-card-title>
+    </ion-card-header> 
+    <ion-card-content>
+      <ion-button shape="round" (click)="recordVideo()"><ion-icon name="videocam"></ion-icon></ion-button>
+      <ion-button shape="round" (click)="playbackVideo()"><ion-icon name="play"></ion-icon></ion-button>
+      <br>
+      <video controls #myvideo width="100%">
+      </video>      
+    </ion-card-content>
+  </ion-card>
+-->
+  </div>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>    
+    <ion-title >
+      Track
+    </ion-title>
+    <!--
+    <ion-button shape="round" (click)="startBgTracking()">Start Bg</ion-button>    
+    <ion-button shape="round" (click)="stopBgTracking()">Stop Bg</ion-button>    
+    -->
+  </ion-toolbar>
+  
+</ion-header>
+
+<!--<ion-content [style.backgroundColor]="myColor">-->
+  <ion-content>
+    <ion-button shape="round"  [fill]="trackFill()" [disabled]="trackDisabled()" (click)="tracking()">Start</ion-button>
+    <ion-button shape="round" [fill]="stopFill()"  [disabled]="stopDisabled()" (click)="stopBgTracking()">Stop</ion-button> 
+
+  <ion-grid>
+    <ion-row>
+      Time elapsed: {{timeElapsed}}
+    </ion-row>
+    <ion-row>
+      Events: {{events}}
+    </ion-row>
+    <ion-row>
+      Events Added: {{eventsAdded}}
+    </ion-row>
+    <ion-row>
+      Millisecs per getCurrentPos: {{getPosMs}}
+    </ion-row>
+  </ion-grid>
+
+  <div id="map_canvas"></div>
+  
+</ion-content>
+
+<!--<my-tab-bar></my-tab-bar>-->

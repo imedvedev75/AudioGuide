@@ -1,0 +1,26 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>{{place.name}}</ion-title>
+    <ion-buttons slot="end">
+        <ion-button (click)="close()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="content-container">
+    <!--<video controls autoplay #myvideo width="100%"></video>-->
+
+    <ion-slides pager="true" [options]="slideOpts" #slides>
+      <ion-slide  *ngFor = "let image of place.images;">
+          <img class="image" src="{{glob.getFileURL(image, guide.guide_uuid, guide.mode)}}" >
+      </ion-slide>
+    </ion-slides>
+
+    <audio controls autoplay #myaudio id="myaudio"></audio>
+    
+    <ion-textarea readonly id="description" text-wrap type="text" #descriptionField [(ngModel)]="place.description"></ion-textarea>
+  </div>
+
+</ion-content>
+ 
